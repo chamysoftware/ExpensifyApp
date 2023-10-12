@@ -176,6 +176,17 @@ class Hoverable extends Component {
                     child.props.onMouseLeave(el);
                 }
             },
+            onMouseMove: (el) => {
+                if (_.isFunction(this.props.onMouseMove)) {
+                    this.props.onMouseMove(el);
+                }
+
+                if (this.isHoveredRef) {
+                    return;
+                }
+
+                this.setIsHovered(true);
+            },
             onBlur: (el) => {
                 // Check if the blur event occurred due to clicking outside the element
                 // and the wrapperView contains the element that caused the blur and reset isHovered
